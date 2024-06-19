@@ -1,0 +1,91 @@
+{
+    "name": "douglasgreen/sql-tidy",
+    "description": "SQL reformatter",
+    "license": "MIT",
+    "type": "project",
+    "homepage": "https://github.com/douglasgreen/sql-tidy",
+    "authors": [
+        {
+            "name": "Douglas Green",
+            "email": "douglas@nurd.site",
+            "homepage": "https://nurd.site/",
+            "role": "Developer"
+        }
+    ],
+    "keywords": [
+        "bigquery",
+        "database",
+        "db2",
+        "formatter",
+        "indentation",
+        "mariadb",
+        "mysql",
+        "n1ql",
+        "plsql",
+        "postgresql",
+        "presto",
+        "pretty-print",
+        "query",
+        "redshift",
+        "singlestoredb",
+        "snowflake",
+        "spark",
+        "sql",
+        "sql-formatter",
+        "sqlite",
+        "sql-parser",
+        "syntax-highlighting",
+        "tidb",
+        "transact-sql",
+        "trino"
+    ],
+    "autoload": {
+        "psr-4": {
+            "DouglasGreen\\SqlTidy\\": "src/",
+            "DouglasGreen\\SqlTidy\\Tests\\": "tests/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/douglasgreen/config-setup"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/douglasgreen/optparser"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/douglasgreen/utility"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "douglasgreen/optparser": "dev-main",
+        "douglasgreen/utility": "dev-main",
+        "phpmyadmin/sql-parser": "^5.9"
+    },
+    "require-dev": {
+        "douglasgreen/config-setup": "dev-main",
+        "phpmd/phpmd": "^2.15",
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^10.5",
+        "rector/rector": "^1.0",
+        "symplify/easy-coding-standard": "^12.2"
+    },
+    "scripts": {
+        "lint": [
+            "ecs",
+            "rector --dry-run",
+            "./run_phpmd.sh",
+            "./run_phpstan.sh"
+        ],
+        "lint:fix": [
+            "ecs --fix",
+            "rector"
+        ],
+        "post-install-cmd": "vendor/douglasgreen/config-setup/bin/copy_files.php",
+        "post-update-cmd": "vendor/douglasgreen/config-setup/bin/copy_files.php",
+        "test": "phpunit"
+    }
+}

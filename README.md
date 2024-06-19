@@ -1,2 +1,3 @@
 # sql-tidy
+
 SQL reformatter
