@@ -1,17 +1,7 @@
 {
     "name": "douglasgreen/sql-tidy",
     "description": "SQL reformatter",
-    "license": "MIT",
     "type": "project",
-    "homepage": "https://github.com/douglasgreen/sql-tidy",
-    "authors": [
-        {
-            "name": "Douglas Green",
-            "email": "douglas@nurd.site",
-            "homepage": "https://nurd.site/",
-            "role": "Developer"
-        }
-    ],
     "keywords": [
         "bigquery",
         "database",
@@ -39,32 +29,47 @@
         "transact-sql",
         "trino"
     ],
+    "homepage": "https://github.com/douglasgreen/sql-tidy",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Douglas Green",
+            "email": "douglas@nurd.site",
+            "homepage": "https://nurd.site/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "phpmyadmin/sql-parser": "^5.9"
+    },
+    "require-dev": {
+        "douglasgreen/config-setup": "dev-main",
+        "phpstan/phpstan": "^1.11.9",
+        "phpunit/phpunit": "^10.5.29",
+        "rector/rector": "^1.2.2",
+        "symplify/easy-coding-standard": "^12.3.4"
+    },
     "autoload": {
         "psr-4": {
             "DouglasGreen\\SqlTidy\\": "src/",
             "DouglasGreen\\SqlTidy\\Tests\\": "tests/"
         }
     },
-   "config": {
-        "sort-packages": true
-    },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "require": {
-        "php": ">=8.1",
-        "douglasgreen/utility": "dev-main",
-        "phpmyadmin/sql-parser": "^5.9"
-    },
-    "require-dev": {
-        "phpstan/phpstan": "^1.11",
-        "phpunit/phpunit": "^10.5",
-        "rector/rector": "^1.2",
-        "symplify/easy-coding-standard": "^12.3"
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/douglasgreen/config-setup"
+        }
+    ],
+    "config": {
+        "sort-packages": true
     },
     "scripts": {
         "lint": [
             "ecs",
-            "php-linter",
             "phpstan analyse",
             "rector --dry-run"
         ],
@@ -72,8 +77,8 @@
             "ecs --fix",
             "rector"
         ],
-        "post-install-cmd": "config-setup --pre-commit",
-        "post-update-cmd": "config-setup --pre-commit",
+        "post-install-cmd": "config-setup",
+        "post-update-cmd": "config-setup",
         "test": "phpunit"
     }
 }
